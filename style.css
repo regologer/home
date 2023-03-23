@@ -11,16 +11,28 @@ body{
     overflow: hidden;
     
 }
+.image{
+    background-image: url("image.png");
+    background-size: cover;
+    position: relative;
+    
+    width: 500px;
+    /* height: 600px; */
+    height:  100vh;
+    transition: background-position 0.2s ease-in;
+}
 .upper{
     position: absolute;
     width: 100%;
-    height: 53%;
+    height: 52%;
 }
+
 .lower{
     position: absolute;
     width: 100%;
-    height: 47%;
-    top: 53%;
+    top: 52%;
+    height: 48%;
+    
 }
 .player2{
     position: absolute;
@@ -39,16 +51,15 @@ body{
 .obstacle1{
     position: absolute;
     left: 87%;
-    top: -3.5%;
+    top: calc(75% - 270px);
     transform: scale(0.5);
     transition: opacity 0.5s ease-in;
 }
 .obstacle2{
     position: absolute;
     left: 87%;
-    top: 32.5%;
+    top: calc(52% - 270px);
     transform: scale(0.5);   
-    
 }
 .first{
     transition: opacity 0.5s ease-in;
@@ -57,16 +68,7 @@ body{
     transition: opacity 0.5s ease-in;
 }
 
-.image{
-    background-image: url("image.png");
-    background-size: cover;
-    position: relative;
-    
-    width: 500px;
-    /* height: 600px; */
-    height:  100vh;
-    transition: background-position 0.2s ease-in;
-}
+
 
 .start button{
     position: absolute;
@@ -116,17 +118,18 @@ body{
         width: 100vw;
     }
     .obstacle1{
-    position: absolute;
-    left: 92%;
-    top: -0.5%;
-    transform: scale(0.5);
-}
-.obstacle2{
-    position: absolute;
-    left: 110%;
-    top: 35%;
-    transform: scale(0.5);   
-}
+        position: absolute;
+        left: 87%;
+        top: calc(75% - 270px);
+        transform: scale(0.5);
+        transition: opacity 0.5s ease-in;
+    }
+    .obstacle2{
+        position: absolute;
+        left: 87%;
+        top: calc(52% - 270px);
+        transform: scale(0.5);   
+    }
     .game-over{
         position: absolute;
         left: 20%;
