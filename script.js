@@ -18,7 +18,7 @@ let container_width = 500
 firstObs.style.opacity = 0;
 secondObs.style.opacity = 0;
 
-startBtn.addEventListener('click', game)
+document.addEventListener('click', game, {once: true})
 document.addEventListener("keydown", function(event) {
     if (event.keyCode === 83) {
       // Up arrow key
@@ -37,6 +37,7 @@ let backgroundMovement = setInterval(()=>{
 function game()
 {
     startBtn.disabled = true
+    startBtn.style.opacity = 0
     let playerScore = 0
     let opacity_up = true
     let opacity_down = false
@@ -175,7 +176,7 @@ function game()
                 }
             k = 0;
             playerScore++
-            score.innerHTML = "<h1>Score = " + playerScore + "0</h1>" 
+            score.innerHTML = "<h2>Score = " + playerScore + "0</h2>" 
         }
         }
         if(istrue2 == true){
@@ -184,7 +185,7 @@ function game()
             if(j > container_width * 2)
             {
                 playerScore++
-                score.innerHTML = "<h1>Score = " + playerScore + "0</h1>"
+                score.innerHTML = "<h2>Score = " + playerScore + "0</h2>"
                 const randomNumber4 = Math.floor(Math.random() * 2) + 1;
                 j = 0
                 if(randomNumber4  == 1)
