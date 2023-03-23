@@ -11,14 +11,14 @@ let gameOver = document.querySelector('.game-over')
 let score = document.querySelector('.score')
 let newGame = document.querySelector('.new-game')
 let container = document.querySelector('.image')
-
+let startBtn = document.querySelector('.start-btn')
 
 let container_width = 500
 
 firstObs.style.opacity = 0;
 secondObs.style.opacity = 0;
 
-start.addEventListener('click', game)
+startBtn.addEventListener('click', game)
 document.addEventListener("keydown", function(event) {
     if (event.keyCode === 83) {
       // Up arrow key
@@ -36,7 +36,7 @@ let backgroundMovement = setInterval(()=>{
 }, 0.5)
 function game()
 {
-
+    startBtn.disabled = true
     let playerScore = 0
     let opacity_up = true
     let opacity_down = false
@@ -72,6 +72,7 @@ function game()
     upper.addEventListener('click',player1_opacity)
     firstObs.addEventListener('click',player1_opacity)
     player1.addEventListener('click',player1_opacity)
+    start.addEventListener('click', player1_opacity)
     function player1_opacity(){
         player2.style.opacity = "0"
         player1.style.opacity = "1"
@@ -131,15 +132,13 @@ function game()
             f = Math.floor(Math.random() * 5) + 1;
         }
         
-        
-        
     
         
         if(((leftPlayer1 - leftFirstObs) > 0 ) && ((leftPlayer1 - leftFirstObs) < 100 ) && (opacity_up == true))
         {
             gameOver.style.opacity = "1"
             newGame.disabled = false
-            start.disabled = true
+            startBtn.disabled = false
             clearInterval(backgroundMovement)
             clearInterval(realFunction)
         }
@@ -147,7 +146,7 @@ function game()
         {
             gameOver.style.opacity = "1"
             newGame.disabled = false
-            start.disabled = true
+            startBtn.disabled = false
             clearInterval(backgroundMovement)
             clearInterval(realFunction)
         }
