@@ -29,16 +29,17 @@ document.addEventListener("keydown", function(event) {
         location.reload();
     }
 })
-
+let a = 0
+let backgroundMovement = setInterval(()=>{
+    backgroundImage.style.backgroundPosition=  -a* 1 + "px 0px";
+    a = a + 5;
+}, 0.5)
 function game()
 {
-    
 
-    
     let playerScore = 0
     let opacity_up = true
     let opacity_down = false
-    let a = 0
     let q = 1
     let r = 1
     document.addEventListener("keydown", function(event) {
@@ -78,28 +79,45 @@ function game()
         opacity_down = false
     }
     // BackgroundMovement setinterval
-    let backgroundMovement = setInterval(()=>{
-        backgroundImage.style.backgroundPosition=  -a* 1 + "px 0px";
-        a = a + 5;
-    }, 0.5)
+    
     
     let k = 30;
     let j = 0;
     let f = 50;
+    
     let istrue1  = true;
-    let istrue2 = true;
+    let istrue2 = false;
+    
+    const randomNumber3 = Math.floor(Math.random() * 2) + 1
+        
+        if(randomNumber3 == 1)
+        {
+            istrue1 = true
+            istrue2 = false
+            firstObs.style.opacity = "1"
+            secondObs.style.opacity = "0"
+        }
+        else{
+            istrue1 = false
+            istrue2 = true
+            firstObs.style.opacity = "0"
+            secondObs.style.opacity = "1"
+        }
     newGame.addEventListener('click', ()=>{location.reload()})
     let realFunction = setInterval(()=>{
+        
         let leftFirstObs = firstObs.getBoundingClientRect().left;
         let leftSecondObs = secondObs.getBoundingClientRect().left;
-        if(leftFirstObs < (container.getBoundingClientRect().left + container_width))
-        {
-            firstObs.style.opacity = 1
-        }
-        if(leftSecondObs < (container.getBoundingClientRect().left + container_width))
-        {
-            secondObs.style.opacity = 1
-        }
+        let leftPlayer1 = player1.getBoundingClientRect().left + 90;
+        let leftPlayer2 = player2.getBoundingClientRect().left + 90;
+        // if(leftFirstObs >  leftPlayer1)
+        // {
+        //     firstObs.style.opacity = 1
+        // }
+        // if((leftSecondObs > leftPlayer2))
+        // {
+        //     secondObs.style.opacity = 1
+        // }
         const randomNumber = Math.floor(Math.random() * 2) + 1;
         if(randomNumber == 1)
         {
@@ -110,12 +128,11 @@ function game()
         else{
             h= Math.floor(Math.random() * 10) + 1;
             i = Math.floor(Math.random() * 10) + 40;
-            f = Math.floor(Math.random() * 10) + 1;
+            f = Math.floor(Math.random() * 5) + 1;
         }
         
         
-        let leftPlayer1 = player1.getBoundingClientRect().left + 90;
-        let leftPlayer2 = player2.getBoundingClientRect().left + 90;
+        
     
         
         if(((leftPlayer1 - leftFirstObs) > 0 ) && ((leftPlayer1 - leftFirstObs) < 100 ) && (opacity_up == true))
@@ -134,63 +151,57 @@ function game()
             clearInterval(backgroundMovement)
             clearInterval(realFunction)
         }
-        
-        leftFirstObs = firstObs.getBoundingClientRect().left;
-        leftSecondObs= secondObs.getBoundingClientRect().left;
-        if(((((leftFirstObs-leftSecondObs) <= 0) && ((leftFirstObs-leftSecondObs) >= -290))|| (((leftSecondObs-leftFirstObs) <= 290) && ((leftSecondObs-leftFirstObs) >= 0))) && ((leftFirstObs < (leftPlayer1 + 100)) || ((leftSecondObs < (leftPlayer2 + 100)))))
-        {
-            const randomNumber2 = Math.floor(Math.random() * 2) + 1;
-            
-            if(randomNumber2 == 1)
-                {
-                    if(leftFirstObs < container.getBoundingClientRect().right )
-                    {   
-                        console.log(leftPlayer1)
-                        console.log('hello')
-                        firstObs.style.transform = "translateX(" + (-k + 140) +"px)"
-                        k = k -140
-                    }
-                    istrue1 = false
-                    istrue2 = true
-                }
-            else
-            {
-                if(leftSecondObs < container.getBoundingClientRect().right )
-                {
-                    console.log('world')
-                    secondObs.style.transform = "translateX(" + (-j + 190) +"px)"
-                    j = j - 90
-                }
-                istrue2 = false;
-                istrue1 = true;
-            }
-        }
-        
 
     
         if(istrue1 == true)
         {
-        firstObs.style.transform = "translateX(" + -k + "px)";
-        k = k + h ;
+            firstObs.style.transform = "translateX(" + -k + "px)";
+            k = k + h ;
         
         if(k > container_width *2)
         {
+            const randomNumber5 = Math.floor(Math.random() * 2) + 1;
+                if(randomNumber5  == 1)
+                {
+                firstObs.style.opacity = 1
+                secondObs.style.opacity = 0
+                istrue1 = true
+                istrue2 = false
+                }
+                else{
+                    secondObs.style.opacity = 1
+                    firstObs.style.opacity = 0
+                    istrue2 = true
+                    istrue1 = false
+                }
             k = 0;
-            istrue2 = true;
             playerScore++
             score.innerHTML = "<h1>Score = " + playerScore + "0</h1>" 
         }
         }
         if(istrue2 == true){
-        secondObs.style.transform = "translateX(" + -j + "px)";
-        j = j + i;
-        if(j > container_width * 2.4)
-        {
-            playerScore++
-            score.innerHTML = "<h1>Score = " + playerScore + "0</h1>" 
-            istrue1 = true;
-            j = 122;
-        }
+            secondObs.style.transform = "translateX(" + -j + "px)"
+            j = j + i
+            if(j > container_width * 2)
+            {
+                playerScore++
+                score.innerHTML = "<h1>Score = " + playerScore + "0</h1>"
+                const randomNumber4 = Math.floor(Math.random() * 2) + 1;
+                j = 0
+                if(randomNumber4  == 1)
+                {
+                    firstObs.style.opacity = 1
+                    secondObs.style.opacity = 0
+                    istrue1 = true
+                    istrue2 = false
+                }
+                else{
+                    firstObs.style.opacity = 0
+                    secondObs.style.opacity = 1
+                    istrue2 = true
+                    istrue1 = false
+                }
+            }
         }
     }
     , f)

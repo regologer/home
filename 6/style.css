@@ -38,14 +38,14 @@ body{
 
 .obstacle1{
     position: absolute;
-    left: 92%;
-    top: 2%;
+    left: 87%;
+    top: -3.5%;
     transform: scale(0.5);
 }
 .obstacle2{
     position: absolute;
-    left: 110%;
-    top: 35%;
+    left: 87%;
+    top: 32.5%;
     transform: scale(0.5);   
 }
 .image{
@@ -109,7 +109,7 @@ body{
     .obstacle1{
     position: absolute;
     left: 92%;
-    top: 2%;
+    top: -0.5%;
     transform: scale(0.5);
 }
 .obstacle2{
@@ -118,4 +118,8 @@ body{
     top: 35%;
     transform: scale(0.5);   
 }
+    .game-over{
+        position: absolute;
+        left: 20%;
+    }
 }
