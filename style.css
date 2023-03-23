@@ -114,6 +114,14 @@ body{
 
 @media only screen and (max-width: 768px) {
     /* CSS rules to apply when the screen width is less than or equal to 768px */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    *body{
+        width: 100vw;
+        height: 100vh;
+    }
     .image {
         width: 100vw;
     }
