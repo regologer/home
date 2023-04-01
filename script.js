@@ -8,7 +8,7 @@ window.addEventListener('scroll', ()=>
     videos.forEach((video)=>{
         var y = video.offsetTop;
         
-        if(y < scrollPosition + 300)
+        if(y < scrollPosition + 500)
         {
             video.classList.add('active')
         }
